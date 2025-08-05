@@ -33,7 +33,7 @@ const HeroSection = () => {
           
           {/* Subtitle */}
           <p className="text-xl sm:text-2xl text-portfolio-text-dim mb-8 max-w-2xl mx-auto">
-            Desarrollador web apasionado por crear soluciones elegantes
+              Desarrollador web en constante evolución, enfocado en ofrecer soluciones claras y efectivas.
           </p>
           
           {/* CTA Buttons */}

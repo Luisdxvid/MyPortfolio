@@ -53,7 +53,7 @@ const Header = () => {
               }}
               className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
             >
-              Portfolio
+              L.Rodriguez
             </a>
           </div>
 
