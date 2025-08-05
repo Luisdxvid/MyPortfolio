@@ -14,7 +14,7 @@ import {
   SiJira,
   SiPrimevue,
 } from 'react-icons/si';
-import { DiVisualstudio, DiWindows } from "react-icons/di";
+import { DiWindows } from "react-icons/di";
 
 
 const StackSection = () => {
