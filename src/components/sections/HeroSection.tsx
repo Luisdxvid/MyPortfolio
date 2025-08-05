@@ -9,6 +9,14 @@ const HeroSection = () => {
     }
   };
 
+  const handleMailClick = () => {
+    window.location.href = 'mailto:luisrodriguezortigoza@gmail.com';
+  };
+
+  const handleDownloadCV = () => {
+    window.open('/CVLuisRodriguez.pdf', '_blank');
+  };
+
   return (
     <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient overlay */}
@@ -33,21 +41,23 @@ const HeroSection = () => {
           
           {/* Subtitle */}
           <p className="text-xl sm:text-2xl text-portfolio-text-dim mb-8 max-w-2xl mx-auto">
-            Desarrollador web apasionado por crear soluciones elegantes
+              Desarrollador web en constante evolución, enfocado en ofrecer soluciones claras y efectivas.
           </p>
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
-              size="lg" 
-              className="bg-gradient-primary hover:opacity-90 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 animate-glow"
+              size="lg"
+              onClick={handleMailClick}
+              className="bg-gradient-primary hover:opacity-90 text-white font-semibold px-8 py-3 rounded-full transition-all duration-750 hover:scale-105 animate-glow"
             >
               <Mail className="w-5 h-5 mr-2" />
-              Contrátame
+              Contáctame
             </Button>
             <Button 
               variant="outline" 
               size="lg"
+              onClick={handleDownloadCV}
               className="border-portfolio-glow text-portfolio-glow hover:bg-portfolio-glow hover:text-background font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               <Download className="w-5 h-5 mr-2" />
