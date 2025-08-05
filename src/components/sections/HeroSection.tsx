@@ -40,10 +40,10 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
-              className="bg-gradient-primary hover:opacity-90 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 animate-glow"
+              className="bg-gradient-primary hover:opacity-90 text-white font-semibold px-8 py-3 rounded-full transition-all duration-750 hover:scale-105 animate-glow"
             >
               <Mail className="w-5 h-5 mr-2" />
-              Contrátame
+              Contáctame
             </Button>
             <Button 
               variant="outline" 

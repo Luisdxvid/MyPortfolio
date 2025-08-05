@@ -1,47 +1,46 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, ExternalLink, Computer } from 'lucide-react';
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: "Senior Full Stack Developer",
-      company: "Tech Solutions Inc.",
-      location: "Remoto",
-      period: "2022 - Presente",
-      description: "Lideré el desarrollo de aplicaciones web modernas utilizando React, Node.js y PostgreSQL. Implementé arquitecturas escalables y mentoreé a desarrolladores junior.",
-      technologies: ["React", "Node.js", "PostgreSQL", "AWS", "Docker"],
-      achievements: [
-        "Aumenté la performance de la aplicación en un 40%",
-        "Lideré un equipo de 5 desarrolladores",
-        "Implementé CI/CD pipelines"
-      ]
-    },
-    {
-      title: "Full Stack Developer",
-      company: "Digital Innovations",
-      location: "Madrid, España",
-      period: "2020 - 2022",
-      description: "Desarrollé y mantuve múltiples proyectos web utilizando tecnologías modernas. Colaboré estrechamente con equipos de diseño y producto.",
-      technologies: ["Vue.js", "Express", "MongoDB", "Redis"],
-      achievements: [
-        "Desarrollé 3 aplicaciones web completas",
-        "Reduje el tiempo de carga en un 50%",
-        "Implementé testing automatizado"
-      ]
-    },
-    {
       title: "Frontend Developer",
-      company: "StartUp Ventures",
-      location: "Barcelona, España",
-      period: "2019 - 2020",
-      description: "Creé interfaces de usuario atractivas y funcionales. Trabajé en un ambiente ágil con sprints de 2 semanas.",
-      technologies: ["React", "TypeScript", "Styled Components"],
+      company: "Grupo Banklot",
+      location: "Remoto",
+      period: " Julio 2024 - Presente",
+      description: "Desarrollo de interfaces web modernas con Vuejs, optimizadas para rendimiento y accesibilidad.",
+      technologies: ["Vuejs", "TypeScript", "Go", "PostgreSQL", "Docker", "PrimeVue"],
       achievements: [
-        "Mejoré la experiencia de usuario significativamente",
-        "Implementé diseño responsive",
-        "Colaboré con equipos multidisciplinarios"
+        "Identifico y resuelvo problemas de rendimiento en las aplicaciones web",
+        "Colaboro con el equipo de backend para alinear requerimientos técnicos con necesidades de usuarios finales",
+        "Garantizo que las soluciones tecnológicas se alineen a las necesidades de los usuarios"
       ]
+    },
+    {
+      title: "Desarrollador Web",
+      company: "Freelance",
+      location: "Remoto",
+      period: "Diciembre 2023 - Marzo 2024",
+      description: "Desarrollé una pagina web haciendo uso de WordPress con el plugin Divi para una empresa de alquiler de artículos mobiliarios para eventos",
+      technologies: ["WordPress", "Divi"],
+      achievements: [
+        "Implementé un catálogo de productos y pasarela de pagos, mejorando la experiencia de compra del cliente",
+      ]
+    },
+    {
+      title: "Prácticas profesionales (Asistente de Programación)",
+      company: "GENIO, Casa de Software C.A.",
+      location: "Maracaibo, Venezuela",
+      period: "Enero 2023 - Abril 2023",
+      description: "Diseño y desarrollo de la página principal de la empresa, enfocada en presentar de forma clara los sistemas administrativos que ofrece.",
+      technologies: ["HTML", "CSS", "JavaScript", "PHP"],
+      achievements: [
+        "Diseñé una landing page orientada a la captación de clientes potenciales",
+        "Mejoré la comunicación visual de los productos mediante contenido estructurado",
+        "Integré un sistema para que los clientes pudieran consultar la validez de sus licencias en tiempo real",
+      ]
+      
     }
   ];
 
@@ -87,7 +86,7 @@ const ExperienceSection = () => {
                             {exp.title}
                           </CardTitle>
                           <div className="flex items-center gap-2 text-portfolio-glow font-semibold mb-2">
-                            <ExternalLink className="w-4 h-4" />
+                            <Computer className="w-4 h-4" />
                             {exp.company}
                           </div>
                         </div>
@@ -116,7 +115,7 @@ const ExperienceSection = () => {
                             <Badge
                               key={tech}
                               variant="secondary"
-                              className="bg-secondary/70 text-foreground hover:bg-portfolio-glow hover:text-background transition-colors duration-300"
+                              className="bg-secondary/70 text-foreground hover:bg-portfolio-glow hover:text-background transition-colors duration-300 cursor-pointer"
                             >
                               {tech}
                             </Badge>
