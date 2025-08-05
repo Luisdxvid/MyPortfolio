@@ -27,7 +27,7 @@ const HeroSection = () => {
           </div>
           
           {/* Name with gradient */}
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text mb-6">
             Luis Rodríguez
           </h2>
           
@@ -57,7 +57,7 @@ const HeroSection = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* <div className="absolute bottom-0.2  left-1/2 transform -translate-x-1/2 animate-bounce">
           <Button
             variant="ghost"
             size="icon"
@@ -66,7 +66,7 @@ const HeroSection = () => {
           >
             <ChevronDown className="w-6 h-6 text-portfolio-glow" />
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

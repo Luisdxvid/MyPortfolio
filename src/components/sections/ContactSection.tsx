@@ -67,26 +67,26 @@ const ContactSection = () => {
             ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
+  
+        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
           {/* Contact Form */}
-          <div className="animate-slide-up">
-            <Card className="bg-gradient-card border-border/50 backdrop-blur-sm">
+          <div className="animate-slide-up w-full">
+            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-3">
                   <Send className="w-6 h-6 text-portfolio-glow" />
                   Envíame un mensaje
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
+              <CardContent className="space-y-6 w-full">
+                <div className="grid sm:grid-cols-2 gap-4 w-full min-w-0">
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Nombre
                     </label>
                     <Input 
                       placeholder="Tu nombre"
-                      className="bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                      className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                     />
                   </div>
                   <div>
@@ -96,7 +96,7 @@ const ContactSection = () => {
                     <Input 
                       type="email"
                       placeholder="tu@email.com"
-                      className="bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                      className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const ContactSection = () => {
                   </label>
                   <Input 
                     placeholder="Asunto del mensaje"
-                    className="bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                    className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                   />
                 </div>
                 
@@ -118,7 +118,7 @@ const ContactSection = () => {
                   <Textarea 
                     placeholder="Cuéntame sobre tu proyecto..."
                     rows={6}
-                    className="bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300 resize-none"
+                    className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300 resize-none"
                   />
                 </div>
                 
@@ -132,11 +132,11 @@ const ContactSection = () => {
               </CardContent>
             </Card>
           </div>
-
+  
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <div className="space-y-8 animate-fade-in w-full" style={{ animationDelay: '200ms' }}>
             {/* Contact details */}
-            <Card className="bg-gradient-card border-border/50 backdrop-blur-sm">
+            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">
                   Información de contacto
@@ -144,33 +144,40 @@ const ContactSection = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors duration-300">
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors duration-300"
+                  >
                     <div className="w-12 h-12 bg-portfolio-glow/20 rounded-full flex items-center justify-center">
                       <item.icon className="w-6 h-6 text-portfolio-glow" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground">{item.title}</h4>
-                      <a 
-                        href={item.href}
-                        className="text-portfolio-text-dim hover:text-portfolio-glow transition-colors duration-300 cursor-pointer"
-                      >
-                        {item.value}
-                      </a>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-sm text-portfolio-text-dim hover:text-portfolio-glow transition-colors duration-300 cursor-pointer"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="cursor-pointer text-portfolio-text-dim text-sm">{item.value}</p>
+                      )}
                     </div>
                   </div>
                 ))}
               </CardContent>
             </Card>
-
+  
             {/* Social Links */}
-            <Card className="bg-gradient-card border-border/50 backdrop-blur-sm">
+            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">
                   Mis Redes Sociales
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                   {socialLinks.map((social, index) => (
                     <a
                       key={index}
@@ -179,16 +186,15 @@ const ContactSection = () => {
                       rel="noopener noreferrer"
                       className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
                     >
-                    <social.icon className="w-6 h-6" />
+                      <social.icon className="w-6 h-6" />
                     </a>
                   ))}
-      </div>
-  </CardContent>
-</Card>
-
-
+                </div>
+              </CardContent>
+            </Card>
+  
             {/* Availability */}
-            <Card className="bg-gradient-card border-border/50 backdrop-blur-sm">
+            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -208,6 +214,7 @@ const ContactSection = () => {
       </div>
     </section>
   );
+  
 };
 
 export default ContactSection;
