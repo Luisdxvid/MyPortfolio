@@ -1,4 +1,4 @@
-import { Heart } from 'lucide-react';
+import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -6,9 +6,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
           <p className="text-portfolio-text-dim flex items-center justify-center gap-2">
-            Hecho con 
-            <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" />
-            Luis Rodríguez
+            Hecho por, Luis Rodríguez
           </p>
           <p className="text-sm text-portfolio-text-dim mt-2">
             © {new Date().getFullYear()} Todos los derechos reservados
