@@ -1,29 +1,82 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Toast } from "@/components/ui/toast";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!name || !email || !subject || !message) {
+      toast({
+        title: "Rellena todos los campos",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const result = await emailjs.send(
+        "service_k8gjuqx",
+        "template_of64gjl",
+        {
+          name,
+          email,
+          subject,
+          message,
+        },
+        "MdJAvCreeVyVz0Ej_"
+      );
+
+      toast({
+        title: "Mensaje enviado correctamente",
+        description: "Gracias por contactarme. Te responderé pronto.",
+      });
+
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch (error) {
+      toast({
+        title: "Hubo un error al enviar el mensaje",
+        variant: "destructive",
+      });
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
       value: "luisrodriguezortigoza@gmail.com",
-      href: "mailto:luisrodriguezortigoza@gmail.com"
+      href: "mailto:luisrodriguezortigoza@gmail.com",
     },
     {
       icon: Phone,
       title: "Teléfono",
       value: "+34 691 241 533",
-      href: "tel:+34691241533"
+      href: "tel:+34691241533",
     },
     {
       icon: MapPin,
       title: "Ubicación",
       value: "Pamplona, España",
-    }
+    },
   ];
 
   const socialLinks = [
@@ -31,28 +84,27 @@ const ContactSection = () => {
       icon: FaGithub,
       name: "GitHub",
       href: "https://github.com/Luisdxvid",
-      color: "text-white hover:text-gray-400 bg-gray-800"
+      color: "text-white hover:text-gray-400 bg-gray-800",
     },
     {
       icon: FaLinkedin,
       name: "LinkedIn",
       href: "https://linkedin.com/in/luis-rodriguez-42821a23b/",
-      color: "text-white hover:text-blue-400 bg-blue-700"
+      color: "text-white hover:text-blue-400 bg-blue-700",
     },
     {
       icon: FaTwitter,
       name: "Twitter",
       href: "https://twitter.com/usuario",
-      color: "text-white hover:text-blue-300 bg-sky-500"
+      color: "text-white hover:text-blue-300 bg-sky-500",
     },
     {
       icon: FaWhatsapp,
-      name: 'WhatsApp',
+      name: "WhatsApp",
       href: "https://wa.link/pi2e20",
-      color: "text-white hover:text-green-300 bg-green-500"
-    }
+      color: "text-white hover:text-green-300 bg-green-500",
+    },
   ];
-  
 
   return (
     <section id="contacto" className="py-20 px-4 sm:px-6 lg:px-8 relative">
@@ -67,7 +119,7 @@ const ContactSection = () => {
             ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
           </p>
         </div>
-  
+
         <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
           {/* Contact Form */}
           <div className="animate-slide-up w-full">
@@ -84,8 +136,10 @@ const ContactSection = () => {
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Nombre
                     </label>
-                    <Input 
+                    <Input
                       placeholder="Tu nombre"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                     />
                   </div>
@@ -93,48 +147,59 @@ const ContactSection = () => {
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Email
                     </label>
-                    <Input 
+                    <Input
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="tu@email.com"
                       className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
                     Asunto
                   </label>
-                  <Input 
+                  <Input
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     placeholder="Asunto del mensaje"
                     className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
                   />
                 </div>
-                
+
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
                     Mensaje
                   </label>
-                  <Textarea 
+                  <Textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="Cuéntame sobre tu proyecto..."
                     rows={6}
                     className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300 resize-none"
                   />
                 </div>
-                
-                <Button 
-                  size="lg" 
+
+                <Button
+                  size="lg"
+                  onClick={handleSubmit}
+                  disabled={loading}
                   className="w-full bg-gradient-primary hover:opacity-90 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:scale-105"
                 >
                   <Send className="w-5 h-5 mr-2" />
-                  Enviar mensaje
+                  {loading ? "Enviando" : "Enviar mensaje"}
                 </Button>
               </CardContent>
             </Card>
           </div>
-  
+
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in w-full" style={{ animationDelay: '200ms' }}>
+          <div
+            className="space-y-8 animate-fade-in w-full"
+            style={{ animationDelay: "200ms" }}
+          >
             {/* Contact details */}
             <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardHeader>
@@ -152,7 +217,9 @@ const ContactSection = () => {
                       <item.icon className="w-6 h-6 text-portfolio-glow" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground">{item.title}</h4>
+                      <h4 className="font-semibold text-foreground">
+                        {item.title}
+                      </h4>
                       {item.href ? (
                         <a
                           href={item.href}
@@ -161,14 +228,16 @@ const ContactSection = () => {
                           {item.value}
                         </a>
                       ) : (
-                        <p className="cursor-pointer text-portfolio-text-dim text-sm">{item.value}</p>
+                        <p className="cursor-pointer text-portfolio-text-dim text-sm">
+                          {item.value}
+                        </p>
                       )}
                     </div>
                   </div>
                 ))}
               </CardContent>
             </Card>
-  
+
             {/* Social Links */}
             <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardHeader>
@@ -192,7 +261,7 @@ const ContactSection = () => {
                 </div>
               </CardContent>
             </Card>
-  
+
             {/* Availability */}
             <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
               <CardContent className="p-6">
@@ -204,7 +273,8 @@ const ContactSection = () => {
                     Disponible para proyectos
                   </h4>
                   <p className="text-sm text-portfolio-text-dim">
-                    Actualmente aceptando nuevos proyectos freelance y oportunidades remotas
+                    Actualmente aceptando nuevos proyectos freelance y
+                    oportunidades remotas
                   </p>
                 </div>
               </CardContent>
@@ -214,7 +284,6 @@ const ContactSection = () => {
       </div>
     </section>
   );
-  
 };
 
 export default ContactSection;
