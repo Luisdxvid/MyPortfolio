@@ -89,14 +89,8 @@ const ContactSection = () => {
     {
       icon: FaLinkedin,
       name: "LinkedIn",
-      href: "https://linkedin.com/in/luis-rodriguez-42821a23b/",
+      href: "https://www.linkedin.com/in/luis-rodriguez-42821a23b",
       color: "text-white hover:text-blue-400 bg-blue-700",
-    },
-    {
-      icon: FaTwitter,
-      name: "Twitter",
-      href: "https://twitter.com/usuario",
-      color: "text-white hover:text-blue-300 bg-sky-500",
     },
     {
       icon: FaWhatsapp,
