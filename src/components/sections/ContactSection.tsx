@@ -75,7 +75,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Ubicación",
-      value: "Pamplona, España",
+      value: "Granada, España",
     },
   ];
 
