@@ -75,7 +75,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Ubicación",
-      value: "Granada, España",
+      value: "Madrid, España",
     },
   ];
 
@@ -267,8 +267,8 @@ const ContactSection = () => {
                     Disponible para proyectos
                   </h4>
                   <p className="text-sm text-portfolio-text-dim">
-                    Actualmente aceptando nuevos proyectos freelance y
-                    oportunidades remotas
+                    Actualmente aceptando nuevos proyectos y
+                    oportunidades tanto remotas como locales.
                   </p>
                 </div>
               </CardContent>

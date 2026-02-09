@@ -8,7 +8,7 @@ const ExperienceSection = () => {
       title: "Frontend Developer",
       company: "Grupo Banklot",
       location: "Remoto",
-      period: " Julio 2024 - Presente",
+      period: " Julio 2024 - Enero 2026",
       description: "Desarrollo de interfaces web modernas con Vuejs, optimizadas para rendimiento y accesibilidad.",
       technologies: ["Vuejs", "TypeScript", "Go", "PostgreSQL", "Docker", "PrimeVue"],
       achievements: [
