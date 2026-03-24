@@ -10,7 +10,7 @@ const HeroSection = () => {
   };
 
   const handleDownloadCV = () => {
-    window.open("/CVLuisRodriguez.pdf", "_blank");
+    window.open("/CVLuisRodriguezES.pdf", "_blank");
   };
 
   return (
