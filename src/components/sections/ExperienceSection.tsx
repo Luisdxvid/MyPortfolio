@@ -5,12 +5,12 @@ import { Calendar, MapPin, ExternalLink, Computer } from 'lucide-react';
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: "Frontend Developer",
+      title: "Desarrollador Web Full Stack",
       company: "Grupo Banklot",
       location: "Remoto",
-      period: " Julio 2024 - Enero 2026",
+      period: " Julio 2024 - Febrero 2026",
       description: "Desarrollo de interfaces web modernas con Vuejs, optimizadas para rendimiento y accesibilidad.",
-      technologies: ["Vuejs", "TypeScript", "Go", "PostgreSQL", "Docker", "PrimeVue"],
+      technologies: ["Vuejs", "TypeScript", "Go", "PostgreSQL", "Docker", "PrimeVue", "NestJS", "TailwindCSS"],
       achievements: [
         "Identifico y resuelvo problemas de rendimiento en las aplicaciones web",
         "Colaboro con el equipo de backend para alinear requerimientos técnicos con necesidades de usuarios finales",
