@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -17,13 +19,16 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Sobre mí", href: "#sobre-mi" },
-    { name: "Mi Stack", href: "#stack" },
-    { name: "Experiencia", href: "#experiencia" },
-    { name: "Contacto", href: "#contacto" },
-  ];
+  const navItems = useMemo(
+    () => [
+      { name: t.nav.inicio, href: "#inicio" },
+      { name: t.nav.sobreMi, href: "#sobre-mi" },
+      { name: t.nav.stack, href: "#stack" },
+      { name: t.nav.experiencia, href: "#experiencia" },
+      { name: t.nav.contacto, href: "#contacto" },
+    ],
+    [t],
+  );
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -77,8 +82,8 @@ const Header = () => {
           </div>
 
           {/* Theme and Language toggles */}
-          <div className="flex items-center space-x-4">
-            {/* <LanguageToggle /> */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <LanguageToggle />
             <ThemeToggle />
 
             {/* Mobile menu button */}
