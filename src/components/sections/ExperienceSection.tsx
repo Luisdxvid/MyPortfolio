@@ -8,7 +8,7 @@ const ExperienceSection = () => {
       title: "Desarrollador Web Full Stack",
       company: "Grupo Banklot",
       location: "Remoto",
-      period: " Julio 2024 - Febrero 2026",
+      period: " Julio 2024 - Mayo 2026",
       description: "Desarrollo de interfaces web modernas con Vuejs, optimizadas para rendimiento y accesibilidad.",
       technologies: ["Vuejs", "TypeScript", "Go", "PostgreSQL", "Docker", "PrimeVue", "NestJS", "TailwindCSS"],
       achievements: [
