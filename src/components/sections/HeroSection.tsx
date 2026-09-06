@@ -3,14 +3,15 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const handleMailClick = () => {
     window.location.href = 'mailto:luisrodriguezortigoza@gmail.com';
   };
 
   const handleDownloadCV = () => {
-    window.open('/CVLuisRodriguez.pdf', '_blank');
+    const cvFile = language === 'en' ? '/CVLuisRodriguezEN.pdf' : '/CVLuisRodriguez.pdf';
+    window.open(cvFile, '_blank');
   };
 
   const profileLines: [string, string][] = [
