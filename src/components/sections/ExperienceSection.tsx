@@ -61,7 +61,7 @@ const ExperienceSection = () => {
               </AccordionTrigger>
 
               <AccordionContent className="px-6 pb-6 pt-0">
-                <div className="max-w-3xl">
+                <div className="">
                   <p className="mb-4 leading-relaxed text-portfolio-text-dim">
                     {exp.description}
                   </p>
@@ -83,44 +83,19 @@ const ExperienceSection = () => {
                     </div>
                   </div>
 
-                  {exp.projects && (
-                    <div className="space-y-5">
-                      {exp.projects.map((project) => (
-                        <div
-                          key={project.name}
-                          className="border-l-2 border-primary/30 pl-4"
-                        >
-                          <h4 className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-                            {project.name}
-                          </h4>
-                          <ul className="space-y-1.5 text-sm text-portfolio-text-dim">
-                            {project.achievements.map((achievement, idx) => (
-                              <li key={idx} className="flex items-start gap-2">
-                                <span className="mt-1 text-primary">▸</span>
-                                {achievement}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                  <div>
+                    <h4 className="mb-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                      {t.experience.achievementsLabel}
+                    </h4>
+                    <ul className="space-y-1 text-sm text-portfolio-text-dim">
+                      {exp.achievements.map((achievement, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="mt-1 text-primary">▸</span>
+                          {achievement}
+                        </li>
                       ))}
-                    </div>
-                  )}
-
-                  {exp.achievements && (
-                    <div>
-                      <h4 className="mb-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                        {t.experience.achievementsLabel}
-                      </h4>
-                      <ul className="space-y-1 text-sm text-portfolio-text-dim">
-                        {exp.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="mt-1 text-primary">▸</span>
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                    </ul>
+                  </div>
                 </div>
               </AccordionContent>
             </AccordionItem>

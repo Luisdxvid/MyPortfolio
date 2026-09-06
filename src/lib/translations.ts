@@ -1,10 +1,5 @@
 export type Language = 'es' | 'en';
 
-export interface ExperienceProject {
-  name: string;
-  achievements: string[];
-}
-
 export interface ExperienceItem {
   title: string;
   company: string;
@@ -12,8 +7,7 @@ export interface ExperienceItem {
   period: string;
   description: string;
   technologies: string[];
-  achievements?: string[];
-  projects?: ExperienceProject[];
+  achievements: string[];
 }
 
 export interface Translations {
@@ -145,35 +139,20 @@ export const translations: Record<Language, Translations> = {
           location: 'Remoto',
           period: 'Julio 2024 - Agosto 2026',
           description:
-            'Desarrollo full stack de un ecosistema de plataformas transaccionales en producción (venta de lotería, gestión de agencias y pago de servicios), con integraciones bancarias y de proveedores externos.',
+            'Desarrollo full stack sobre un ecosistema de plataformas transaccionales en producción (Lotomatic, GatoWeb, Loterías24, LottoLivery y Registry), con integraciones bancarias, pasarelas de pago y proveedores externos.',
           technologies: [
             'NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'Go', 'Vue 3',
             'TypeScript', 'Docker', 'Jest', 'AWS S3',
           ],
-          projects: [
-            {
-              name: 'Lotomatic — Plataforma multi-perfil de alto crecimiento',
-              achievements: [
-                'Contribuí al backend (NestJS, TypeORM, PostgreSQL, Redis) de una plataforma que multiplicó su volumen mensual casi 100 veces en 5 meses, pasando de unas 3.000 a más de 300.000 operaciones, con cerca de 5.000 usuarios registrados, más de 250.000 transacciones de fondos y más de 90.000 notificaciones procesadas desde una pasarela de pagos externa, sobre más de 50 variantes de producto integradas con un proveedor externo.',
-                'Rediseñé la lógica de pagos del programa de referidos, que descalificaba usuarios al evaluar solo el primer depósito en lugar del acumulado: la corrección liberó recompensas represadas de más de 20 usuarios y blindó el proceso frente a pagos duplicados en depósitos simultáneos.',
-                'Contribuí a una API de más de 50 controladores y cerca de 300 endpoints REST, respaldada por casi 50 migraciones de base de datos y más de 40 suites de pruebas automatizadas con Jest.',
-              ],
-            },
-            {
-              name: 'GatoWeb, Loterías24 y LottoLivery — Ecosistema de aplicaciones (backend en Go)',
-              achievements: [
-                'Construí los flujos de compra de múltiples productos del ecosistema, usados hoy por más de 5.000 agencias activas y cerca de 15.000 usuarios, con un volumen superior a 20 millones de operaciones mensuales.',
-                'Lancé "Paguetodo" end-to-end, frontend y backend en Go: un módulo de pago de servicios de TV, telefonía e internet que amplió la oferta de la plataforma hacia una nueva línea de negocio.',
-                'Contribuí al panel administrativo que utilizan los equipos de operaciones para monitorear ventas por agencia y distribuidor y gestionar las comisiones de la red, incorporando validaciones que bloquean configuraciones fuera de los límites de negocio permitidos.',
-              ],
-            },
-            {
-              name: 'Registry — Plataforma oficial de registro de operadores',
-              achievements: [
-                'Desarrollé backend (NestJS, PostgreSQL) y frontend (Vue 3) de la plataforma oficial de registro de operadores de un organismo público de loterías, digitalizando la verificación documental (KYC) con almacenamiento en AWS S3, generación de reportes en PDF y geolocalización de puntos de venta.',
-                'Implementé el webhook de notificaciones de pago con una entidad bancaria nacional, con autenticación por API Key, superando su proceso oficial de certificación.',
-              ],
-            },
+          achievements: [
+            'Contribuí al backend (NestJS, TypeORM, PostgreSQL, Redis) de una plataforma que multiplicó su volumen mensual casi 100 veces en 5 meses, pasando de unas 3.000 a más de 300.000 operaciones, con cerca de 5.000 usuarios registrados, más de 250.000 transacciones de fondos y más de 90.000 notificaciones procesadas desde una pasarela de pagos externa, sobre más de 50 variantes de producto integradas con un proveedor externo.',
+            'Construí los flujos de compra del ecosistema de aplicaciones con backend en Go, utilizados hoy por más de 5.000 agencias activas y cerca de 15.000 usuarios, con un volumen superior a 20 millones de operaciones mensuales.',
+            'Lancé "Paguetodo" end-to-end, frontend y backend en Go: un módulo de pago de servicios de TV, telefonía e internet que amplió la oferta de la plataforma hacia una nueva línea de negocio.',
+            'Diseñé y desarrollé de punta a punta el programa de referidos —backend, panel de administración e interfaz de cliente—, con un módulo de configuración que permite al equipo de negocio activar o desactivar el bono y ajustar depósito mínimo y recompensa sin intervención técnica, reportes y gráficos de seguimiento para el área financiera, y control de concurrencia para evitar recompensas duplicadas en depósitos simultáneos.',
+            'Desarrollé backend (NestJS, PostgreSQL) y frontend (Vue 3) de la plataforma oficial de registro de operadores de un organismo público de loterías, digitalizando la verificación documental (KYC) con almacenamiento en AWS S3, generación de reportes en PDF y geolocalización de puntos de venta.',
+            'Implementé el webhook de notificaciones de pago con una entidad bancaria nacional, con autenticación por API Key, superando su proceso oficial de certificación.',
+            'Contribuí a una API de más de 50 controladores y cerca de 300 endpoints REST, respaldada por casi 50 migraciones de base de datos y más de 40 suites de pruebas automatizadas con Jest.',
+            'Contribuí al panel administrativo de operaciones para el seguimiento de ventas por agencia y distribuidor y la gestión de comisiones de la red, con validaciones que bloquean configuraciones fuera de los límites de negocio permitidos.',
           ],
         },
         {
@@ -290,35 +269,20 @@ export const translations: Record<Language, Translations> = {
           location: 'Remote',
           period: 'July 2024 - August 2026',
           description:
-            'Full-stack development of an ecosystem of transactional platforms in production (lottery sales, agency management, and bill payments), with banking and third-party provider integrations.',
+            'Full-stack development across a production ecosystem of transactional platforms (Lotomatic, GatoWeb, Loterías24, LottoLivery, and Registry), with banking integrations, payment gateways, and third-party providers.',
           technologies: [
             'NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'Go', 'Vue 3',
             'TypeScript', 'Docker', 'Jest', 'AWS S3',
           ],
-          projects: [
-            {
-              name: 'Lotomatic — High-growth multi-profile platform',
-              achievements: [
-                'Contributed to the backend (NestJS, TypeORM, PostgreSQL, Redis) of a platform that multiplied its monthly volume almost 100x in 5 months, growing from roughly 3,000 to over 300,000 operations, with close to 5,000 registered users, over 250,000 fund transactions, and more than 90,000 notifications processed from an external payment gateway, across 50+ product variants integrated with a third-party provider.',
-                'Redesigned the payment logic of the referral program, which was disqualifying users by evaluating only the first deposit instead of the cumulative total: the fix released backlogged rewards for 20+ users and hardened the process against duplicate payments on simultaneous deposits.',
-                'Contributed to an API with 50+ controllers and nearly 300 REST endpoints, backed by close to 50 database migrations and 40+ automated test suites with Jest.',
-              ],
-            },
-            {
-              name: 'GatoWeb, Loterías24, and LottoLivery — App ecosystem (Go backend)',
-              achievements: [
-                'Built the purchase flows for multiple products across the ecosystem, used today by more than 5,000 active agencies and close to 15,000 users, with a volume exceeding 20 million monthly operations.',
-                'Shipped "Paguetodo" end-to-end, frontend and backend in Go: a bill-payment module for TV, phone, and internet services that expanded the platform into a new business line.',
-                'Contributed to the admin panel used by operations teams to monitor sales by agency and distributor and manage network commissions, adding validations that block configurations outside allowed business limits.',
-              ],
-            },
-            {
-              name: 'Registry — Official operator registration platform',
-              achievements: [
-                'Developed the backend (NestJS, PostgreSQL) and frontend (Vue 3) of the official operator registration platform for a public lottery authority, digitizing document verification (KYC) with AWS S3 storage, PDF report generation, and point-of-sale geolocation.',
-                'Implemented the payment notification webhook with a national banking institution, using API key authentication, and passed its official certification process.',
-              ],
-            },
+          achievements: [
+            'Contributed to the backend (NestJS, TypeORM, PostgreSQL, Redis) of a platform that multiplied its monthly volume almost 100x in 5 months, growing from roughly 3,000 to over 300,000 operations, with close to 5,000 registered users, over 250,000 fund transactions, and more than 90,000 notifications processed from an external payment gateway, across 50+ product variants integrated with a third-party provider.',
+            'Built the purchase flows for the app ecosystem with a Go backend, used today by more than 5,000 active agencies and close to 15,000 users, with a volume exceeding 20 million monthly operations.',
+            'Shipped "Paguetodo" end-to-end, frontend and backend in Go: a bill-payment module for TV, phone, and internet services that expanded the platform into a new business line.',
+            "Designed and built the referral program end-to-end —backend, admin panel, and client interface— with a configuration module that lets the business team enable or disable the bonus and adjust the minimum deposit and reward without engineering involvement, tracking reports and charts for the finance team, and concurrency control to prevent duplicate rewards on simultaneous deposits.",
+            'Developed the backend (NestJS, PostgreSQL) and frontend (Vue 3) of the official operator registration platform for a public lottery authority, digitizing document verification (KYC) with AWS S3 storage, PDF report generation, and point-of-sale geolocation.',
+            'Implemented the payment notification webhook with a national banking institution, using API key authentication, and passed its official certification process.',
+            'Contributed to an API with 50+ controllers and nearly 300 REST endpoints, backed by close to 50 database migrations and 40+ automated test suites with Jest.',
+            'Contributed to the operations admin panel for tracking sales by agency and distributor and managing network commissions, adding validations that block configurations outside allowed business limits.',
           ],
         },
         {

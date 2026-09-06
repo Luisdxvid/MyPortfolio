@@ -1,4 +1,4 @@
-import OrbitField from '@/components/OrbitField';
+import ParticleField from '@/components/ParticleField';
 import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
@@ -10,8 +10,8 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Deep-space backdrop: twinkling stars + slow green orbits */}
-      <OrbitField />
+      {/* Deep-space backdrop: twinkling stars + a particle swarm that follows the cursor */}
+      <ParticleField />
 
       {/* Fixed header */}
       <Header />
