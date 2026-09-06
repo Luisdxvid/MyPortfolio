@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Toast } from "@/components/ui/toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { toast } from "@/hooks/use-toast";
+import SectionHeading from "@/components/SectionHeading";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -19,7 +21,7 @@ const ContactSection = () => {
   const handleSubmit = async () => {
     if (!name || !email || !subject || !message) {
       toast({
-        title: "Rellena todos los campos",
+        title: t.contact.toasts.missingTitle,
         variant: "destructive",
       });
       return;
@@ -40,8 +42,8 @@ const ContactSection = () => {
       );
 
       toast({
-        title: "Mensaje enviado correctamente",
-        description: "Gracias por contactarme. Te responderé pronto.",
+        title: t.contact.toasts.successTitle,
+        description: t.contact.toasts.successDescription,
       });
 
       setName("");
@@ -50,7 +52,7 @@ const ContactSection = () => {
       setMessage("");
     } catch (error) {
       toast({
-        title: "Hubo un error al enviar el mensaje",
+        title: t.contact.toasts.errorTitle,
         variant: "destructive",
       });
       console.error(error);
@@ -62,20 +64,20 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t.contact.info.email,
       value: "luisrodriguezortigoza@gmail.com",
       href: "mailto:luisrodriguezortigoza@gmail.com",
     },
     {
       icon: Phone,
-      title: "Teléfono",
+      title: t.contact.info.phone,
       value: "+34 691 241 533",
       href: "tel:+34691241533",
     },
     {
       icon: MapPin,
-      title: "Ubicación",
-      value: "Madrid, España",
+      title: t.contact.info.location,
+      value: t.contact.info.locationValue,
     },
   ];
 
@@ -84,95 +86,88 @@ const ContactSection = () => {
       icon: FaGithub,
       name: "GitHub",
       href: "https://github.com/Luisdxvid",
-      color: "text-white hover:text-gray-400 bg-gray-800",
     },
     {
       icon: FaLinkedin,
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/luis-rodriguez-42821a23b",
-      color: "text-white hover:text-blue-400 bg-blue-700",
     },
     {
       icon: FaWhatsapp,
       name: "WhatsApp",
       href: "https://wa.link/pi2e20",
-      color: "text-white hover:text-green-300 bg-green-500",
     },
   ];
 
   return (
-    <section id="contacto" className="py-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            CONTACTO
-          </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
-          <p className="mt-6 text-xl text-portfolio-text-dim max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
-          </p>
-        </div>
+    <section id="contacto" className="relative px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading
+          index="04"
+          label={t.contact.eyebrowLabel}
+          title={t.contact.title}
+          subtitle={t.contact.subtitle}
+        />
 
         <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
           {/* Contact Form */}
-          <div className="animate-slide-up w-full">
-            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
+          <div className="w-full animate-slide-up">
+            <Card className="bracket-corners lift-hover w-full rounded-lg border-border bg-card hover:border-primary/40">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-3">
-                  <Send className="w-6 h-6 text-portfolio-glow" />
-                  Envíame un mensaje
+                <CardTitle className="flex items-center gap-3 font-display text-xl font-bold text-foreground">
+                  <Send className="h-5 w-5 text-primary" />
+                  {t.contact.form.heading}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6 w-full">
-                <div className="grid sm:grid-cols-2 gap-4 w-full min-w-0">
+              <CardContent className="w-full space-y-6">
+                <div className="grid w-full min-w-0 gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Nombre
+                    <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                      {t.contact.form.name}
                     </label>
                     <Input
-                      placeholder="Tu nombre"
+                      placeholder={t.contact.form.namePlaceholder}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                      className="w-full border-border bg-background/40 transition-colors duration-300 focus:border-primary"
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Email
+                    <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                      {t.contact.form.email}
                     </label>
                     <Input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tu@email.com"
-                      className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                      placeholder={t.contact.form.emailPlaceholder}
+                      className="w-full border-border bg-background/40 transition-colors duration-300 focus:border-primary"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Asunto
+                  <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    {t.contact.form.subject}
                   </label>
                   <Input
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="Asunto del mensaje"
-                    className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300"
+                    placeholder={t.contact.form.subjectPlaceholder}
+                    className="w-full border-border bg-background/40 transition-colors duration-300 focus:border-primary"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Mensaje
+                  <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                    {t.contact.form.message}
                   </label>
                   <Textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Cuéntame sobre tu proyecto..."
+                    placeholder={t.contact.form.messagePlaceholder}
                     rows={6}
-                    className="w-full bg-secondary/50 border-border/50 focus:border-portfolio-glow transition-colors duration-300 resize-none"
+                    className="w-full resize-none border-border bg-background/40 transition-colors duration-300 focus:border-primary"
                   />
                 </div>
 
@@ -180,10 +175,10 @@ const ContactSection = () => {
                   size="lg"
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="w-full bg-gradient-primary hover:opacity-90 text-white font-semibold py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                  className="w-full rounded-md bg-primary py-3 font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                 >
-                  <Send className="w-5 h-5 mr-2" />
-                  {loading ? "Enviando" : "Enviar mensaje"}
+                  <Send className="mr-2 h-5 w-5" />
+                  {loading ? t.contact.form.sending : t.contact.form.send}
                 </Button>
               </CardContent>
             </Card>
@@ -191,40 +186,38 @@ const ContactSection = () => {
 
           {/* Contact Info */}
           <div
-            className="space-y-8 animate-fade-in w-full"
+            className="w-full animate-fade-in space-y-8"
             style={{ animationDelay: "200ms" }}
           >
             {/* Contact details */}
-            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
+            <Card className="bracket-corners lift-hover w-full rounded-lg border-border bg-card hover:border-primary/40">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  Información de contacto
+                <CardTitle className="font-display text-xl font-bold text-foreground">
+                  {t.contact.info.heading}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4">
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-4 p-4 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors duration-300"
+                    className="flex items-center gap-4 rounded-md border border-border/60 bg-background/30 p-4 transition-colors duration-300 hover:border-primary/40"
                   >
-                    <div className="w-12 h-12 bg-portfolio-glow/20 rounded-full flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-portfolio-glow" />
+                    <div className="flex h-11 w-11 items-center justify-center rounded-md border border-primary/40 bg-primary/10">
+                      <item.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground">
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         {item.title}
                       </h4>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-sm text-portfolio-text-dim hover:text-portfolio-glow transition-colors duration-300 cursor-pointer"
+                          className="cursor-pointer text-sm text-foreground transition-colors duration-300 hover:text-primary"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="cursor-pointer text-portfolio-text-dim text-sm">
-                          {item.value}
-                        </p>
+                        <p className="text-sm text-foreground">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -233,43 +226,21 @@ const ContactSection = () => {
             </Card>
 
             {/* Social Links */}
-            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  Mis Redes Sociales
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-4 flex-wrap">
+            <Card className="bracket-corners lift-hover w-full rounded-lg border-border bg-card hover:border-primary/40">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-7">
                   {socialLinks.map((social, index) => (
                     <a
                       key={index}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
+                      title={social.name}
+                      className="text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:text-primary"
                     >
-                      <social.icon className="w-6 h-6" />
+                      <social.icon className="h-5 w-5" />
                     </a>
                   ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Availability */}
-            <Card className="w-full bg-gradient-card border-border/50 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
-                  </div>
-                  <h4 className="font-bold text-foreground mb-2">
-                    Disponible para proyectos
-                  </h4>
-                  <p className="text-sm text-portfolio-text-dim">
-                    Actualmente aceptando nuevos proyectos y
-                    oportunidades tanto remotas como locales.
-                  </p>
                 </div>
               </CardContent>
             </Card>

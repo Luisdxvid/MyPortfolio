@@ -1,4 +1,4 @@
-import StarField from '@/components/StarField';
+import OrbitField from '@/components/OrbitField';
 import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
@@ -10,9 +10,9 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Animated star field background */}
-      <StarField />
-      
+      {/* Deep-space backdrop: twinkling stars + slow green orbits */}
+      <OrbitField />
+
       {/* Fixed header */}
       <Header />
       

@@ -1,16 +1,14 @@
-import { Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
-    <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border/50 bg-background/80 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center">
-          <p className="text-portfolio-text-dim flex items-center justify-center gap-2">
-            Hecho por, Luis Rodríguez
-          </p>
-          <p className="text-sm text-portfolio-text-dim mt-2">
-            © {new Date().getFullYear()} Todos los derechos reservados
-          </p>
+    <footer className="border-t border-border bg-background/80 px-4 py-8 backdrop-blur-sm sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col items-center justify-center gap-2 text-center font-mono text-xs text-portfolio-text-dim">
+          <p className="text-sm text-foreground">Luis Rodríguez</p>
+          <p>© {new Date().getFullYear()} — {t.footer.rights}</p>
         </div>
       </div>
     </footer>

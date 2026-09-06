@@ -3,8 +3,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -18,11 +20,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: "Inicio", href: "#inicio" },
-    { name: "Sobre mí", href: "#sobre-mi" },
-    { name: "Mi Stack", href: "#stack" },
-    { name: "Experiencia", href: "#experiencia" },
-    { name: "Contacto", href: "#contacto" },
+    { index: "00", name: t.nav.home, href: "#inicio" },
+    { index: "01", name: t.nav.about, href: "#sobre-mi" },
+    { index: "02", name: t.nav.stack, href: "#stack" },
+    { index: "03", name: t.nav.experience, href: "#experiencia" },
+    { index: "04", name: t.nav.contact, href: "#contacto" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -37,7 +39,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50"
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -51,15 +53,17 @@ const Header = () => {
                 e.preventDefault();
                 scrollToSection("#inicio");
               }}
-              className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              className="group flex items-center gap-2.5"
             >
-              L.Rodriguez
+              <span className="font-mono text-sm uppercase tracking-wider text-foreground transition-colors duration-300 group-hover:text-primary">
+                Luis Rodríguez
+              </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-1">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -68,17 +72,19 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-foreground hover:text-portfolio-glow transition-colors duration-300 text-sm font-medium"
+                  className="group relative px-3 py-2 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors duration-300 hover:text-foreground"
                 >
+                  <span className="mr-1.5 text-primary/70">{item.index}</span>
                   {item.name}
+                  <span className="absolute bottom-0 left-3 right-3 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Theme and Language toggles */}
-          <div className="flex items-center space-x-4">
-            {/* <LanguageToggle /> */}
+          <div className="flex items-center space-x-2">
+            <LanguageToggle />
             <ThemeToggle />
 
             {/* Mobile menu button */}
@@ -102,7 +108,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md rounded-lg mt-2 border border-border/50">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-md rounded-lg mt-2 border border-border">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -111,8 +117,9 @@ const Header = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-foreground hover:text-portfolio-glow hover:bg-secondary/50 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
+                  className="flex items-center gap-2 text-foreground hover:text-primary hover:bg-secondary/50 px-3 py-2 rounded-md font-mono text-sm transition-all duration-300"
                 >
+                  <span className="text-primary/70 text-xs">{item.index}</span>
                   {item.name}
                 </a>
               ))}
